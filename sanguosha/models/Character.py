@@ -12,6 +12,3 @@ class Character(models.Model):
 
     def __str__(self):
         return f'[{self.name}]-[{Group(self.group).name}]-[{Gender(self.gender).name}]'
-
-    class Meta:
-        app_label = 'api'
