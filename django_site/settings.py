@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'api',
     'sanguosha',
     'react',
+    'tailwind',
 ]
 
 MIDDLEWARE = [

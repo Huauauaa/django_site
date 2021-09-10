@@ -21,4 +21,5 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('sanguosha/', include('sanguosha.urls')),
     path('react/', include('react.urls')),
+    path('tailwind/', include('tailwind.urls')),
 ]
