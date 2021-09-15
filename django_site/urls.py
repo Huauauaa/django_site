@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from . import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('sanguosha/', include('sanguosha.urls')),
     path('react/', include('react.urls')),
     path('tailwind/', include('tailwind.urls')),
+    path('students/', views.StudentView.as_view())
 ]
