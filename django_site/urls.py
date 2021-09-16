@@ -24,5 +24,5 @@ urlpatterns = [
     path('sanguosha/', include('sanguosha.urls')),
     path('react/', include('react.urls')),
     path('tailwind/', include('tailwind.urls')),
-    path('students/', views.StudentView.as_view())
+    path('students', views.StudentView.as_view())
 ]
