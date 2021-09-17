@@ -5,22 +5,17 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
+from rest_framework.views import APIView
 
 from api.models import Student
 
 
 class StudentSerializer(serializers.Serializer):
-    name = serializers.CharField()
+    username = serializers.CharField(source='name')
     id = serializers.IntegerField()
 
-    def update(self, instance, validated_data):
-        pass
 
-    def create(self, validated_data):
-        pass
-
-
-class StudentView(View):
+class StudentView(APIView):
     students = Student.objects.all()
     student = Student.objects.all().first()
 
@@ -32,7 +27,7 @@ class StudentView(View):
         # ser = StudentSerializer(instance=self.students, many=1)
         # return HttpResponse(json.dumps(ser.data))
         ser1 = StudentSerializer(instance=self.student, many=0)
-        return HttpResponse(json.dumps(ser1.data))
+        return HttpResponse(json.dumps(ser1.data), content_type=json)
 
     def post(self, request):
         return HttpResponse('POST')
