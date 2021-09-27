@@ -1,5 +1,5 @@
 from api.views.StudentView import *
-from api.views.TeacherView import *
+from api.views.TeacherViewSet import *
 
 
 def index_view(request):
