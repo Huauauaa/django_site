@@ -16,7 +16,7 @@ class TeacherViewSet(ModelViewSet):
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
-        if (serializer.is_valid()):
+        if serializer.is_valid():
             serializer.save()
             return JsonResponse({'data': request.data})
         else:

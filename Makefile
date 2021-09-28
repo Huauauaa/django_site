@@ -3,3 +3,6 @@ dev:
 
 dev3:
 	python3 manage.py runserver
+
+format:
+	black .
