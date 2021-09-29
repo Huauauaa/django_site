@@ -1,5 +1,6 @@
 from api.views.StudentView import *
 from api.views.TeacherViewSet import *
+from api.views.book_view import *
 
 
 def index_view(request):
