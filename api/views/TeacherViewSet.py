@@ -11,9 +11,6 @@ class TeacherViewSet(ModelViewSet):
     queryset = Teacher.objects.all().order_by('-id')
     serializer_class = TeacherSerializer
 
-    # def get_queryset(self):
-    #     return self.queryset
-
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
