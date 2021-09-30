@@ -1,10 +1,11 @@
 from api.serializers.AuthorSerializer import AuthorSerializer
 from rest_framework import serializers
-from rest_framework.serializers import Serializer
+from rest_framework.serializers import ModelSerializer, Serializer
 
 from api.models import Book
 
 
+'''
 class BookSerializer(Serializer):
     name = serializers.CharField()
     publication_id = serializers.CharField()
@@ -21,3 +22,17 @@ class BookSerializer(Serializer):
 
     def create(self, validated_data):
         return Book.objects.create(**validated_data)
+
+'''
+
+
+class BookSerializer(ModelSerializer):
+    author_list = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Book
+        fields = ['id', 'author_list']
+
+    def get_author_list(self, row):
+        authors = row.authors.all()
+        return [{'id': item.id, 'name': item.name} for item in authors]
