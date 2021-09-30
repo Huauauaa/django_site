@@ -1,20 +1,23 @@
+from api.serializers.AuthorSerializer import AuthorSerializer
 from rest_framework import serializers
 from rest_framework.serializers import Serializer
 
-from api.models import Author, Book, Copyright, Publication
+from api.models import Book
 
 
 class BookSerializer(Serializer):
-    name = serializers.CharField(max_length=20)
-    publication_name = serializers.CharField(source='publication.name')
-    publication = serializers.CharField(source='publication_id')
+    name = serializers.CharField()
+    publication_id = serializers.CharField()
     copyright = serializers.CharField(source='copyright_id')
-    # authors = serializers.ReadOnlyField(source='authors')
+    publication = serializers.SerializerMethodField()
+    authors = serializers.SerializerMethodField()
 
-    class Meta:
-        model = Book
-        fields = ('id', 'name', 'publication_name')
+    def get_authors(self, row):
+        authors = row.authors.all()
+        return [{'id': item.id, 'name': item.name} for item in authors]
+
+    def get_publication(self, row):
+        return {'id': row.publication.id, 'name': row.publication.name}
 
     def create(self, validated_data):
-        print('validated_data', validated_data)
         return Book.objects.create(**validated_data)
