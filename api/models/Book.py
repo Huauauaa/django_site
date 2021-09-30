@@ -6,8 +6,8 @@ from django.db import models
 
 class Book(models.Model):
     name = models.CharField('书名', max_length=20)
-    publication = models.ForeignKey(Publication, on_delete=models.CASCADE)
-    copyright = models.OneToOneField(Copyright, on_delete=models.CASCADE)
+    publication = models.ForeignKey(Publication, on_delete=models.CASCADE, null=True)
+    copyright = models.OneToOneField(Copyright, on_delete=models.CASCADE, null=True)
     authors = models.ManyToManyField(Author)
 
     def __str__(self) -> str:
