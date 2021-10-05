@@ -31,7 +31,8 @@ class BookSerializer(ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ['id', 'author_list']
+        fields = ['id', 'author_list', 'authors', 'copyright', 'publication']
+        depth = 1
 
     def get_author_list(self, row):
         authors = row.authors.all()
