@@ -24,4 +24,5 @@ urlpatterns = [
     path('sanguosha/', include('sanguosha.urls')),
     path('react/', include('react.urls')),
     path('tailwind/', include('tailwind.urls')),
+    path('drf/', include('drf.urls')),
 ]

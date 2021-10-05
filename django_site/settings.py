@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'react',
     'tailwind',
     'rest_framework',
+    'drf',
 ]
 
 MIDDLEWARE = [
