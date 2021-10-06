@@ -4,7 +4,7 @@ from drf.models import Comment
 
 
 class CommentSerializer(serializers.Serializer):
-    email = serializers.EmailField()
+    email = serializers.EmailField(error_messages={'required': '邮箱不能为空', 'invalid': '邮箱格式不正确'})
     content = serializers.CharField(max_length=10)
     created = serializers.DateTimeField(required=False)
 
