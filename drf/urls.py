@@ -7,4 +7,5 @@ router = routers.DefaultRouter()
 
 urlpatterns = router.urls + [
     path(r'index', views.index_view),
+    path('comment/', views.comment_view),
 ]
