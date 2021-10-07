@@ -16,7 +16,19 @@
 # print(result)
 
 
-hobbies = ['swiming']
+# hobbies = ['swiming']
 
 
-print(hobbies, type(hobbies))
+# print(hobbies, type(hobbies))
+
+profile = {'id': 1001, 'name': 'Harvey', 'gender': True}
+
+my_name = profile.pop('name')
+print(profile, my_name)
+
+
+def print_gender(gender, id):
+    print('id is %s, gender is %s' % (id, 'male' if gender else 'female'))
+
+
+print_gender(**profile)
