@@ -31,8 +31,12 @@ def comment_view(request):
         else:
             return JsonResponse(serializer.errors)
     else:
+        comments = []
         comment = Comment(email='harvey0379@163.com', content='Hello World')
+        comments.append(comment)
 
-        serializer = CommentSerializer(comment)
-
-        return JsonResponse(serializer.data)
+        serializer = CommentSerializer(
+            instance=comments,
+            many=True,
+        )
+        return HttpResponse(json.dumps(serializer.data))
