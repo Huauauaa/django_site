@@ -5,5 +5,5 @@ __pycache__
 .idea
 .vscode
 *.local.*
-
+*/migrations/*
 db.sqlite3
