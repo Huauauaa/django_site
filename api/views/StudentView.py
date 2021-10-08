@@ -16,16 +16,11 @@ class StudentSerializer(serializers.Serializer):
 
 
 class StudentView(APIView):
-    students = Student.objects.all()
-    student = Student.objects.all().first()
-
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        # ser = StudentSerializer(instance=self.students, many=1)
-        # return HttpResponse(json.dumps(ser.data))
         ser1 = StudentSerializer(instance=self.student, many=0)
         return HttpResponse(json.dumps(ser1.data), content_type=json)
 
