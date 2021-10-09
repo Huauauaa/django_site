@@ -16,13 +16,16 @@ class StudentSerializer(serializers.Serializer):
 
 
 class StudentView(APIView):
+    def get_queryset(self):
+        return Student.objects.all()
+
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        ser1 = StudentSerializer(instance=self.student, many=0)
-        return HttpResponse(json.dumps(ser1.data), content_type=json)
+        student_serializer = StudentSerializer(self.get_queryset(), many=True)
+        return HttpResponse(json.dumps(student_serializer.data), content_type=json)
 
     def post(self, request):
         return HttpResponse('POST')
