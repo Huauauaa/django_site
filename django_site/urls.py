@@ -45,3 +45,7 @@ urlpatterns = [
     path('tailwind/', include('tailwind.urls')),
     path('drf/', include('drf.urls')),
 ]
+
+admin.site.site_header = "超级管理系统"
+admin.site.site_title = "ADMINISTRATION"
+admin.site.index_title = "欢迎光临管理系统"
