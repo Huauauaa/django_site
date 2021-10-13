@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'tailwind',
     'rest_framework',
     'drf',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

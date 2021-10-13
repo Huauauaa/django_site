@@ -19,6 +19,8 @@ from django.urls import path, include
 from api import views
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -44,4 +46,15 @@ urlpatterns = [
     path('react/', include('react.urls')),
     path('tailwind/', include('tailwind.urls')),
     path('drf/', include('drf.urls')),
+    path(
+        'swagger-ui/',
+        get_schema_view(
+            openapi.Info(
+                title="API Server",
+                default_version='v1',
+            ),
+            public=True,
+        ).with_ui('swagger', cache_timeout=0),
+        name='swagger-ui',
+    ),
 ]
