@@ -1,7 +1,7 @@
 from api.models.Teacher import Teacher
+from drf_yasg import openapi
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
-from drf_yasg import openapi
 
 
 class InfoField(serializers.JSONField):

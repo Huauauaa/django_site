@@ -1,10 +1,10 @@
+from api.models.Teacher import Teacher
+from api.serializers.TeacherSerializer import TeacherSerializer
 from django.http.response import JsonResponse
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
-from api.models.Teacher import Teacher
-from api.serializers.TeacherSerializer import TeacherSerializer
-from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 
 class TeacherViewSet(ModelViewSet):
